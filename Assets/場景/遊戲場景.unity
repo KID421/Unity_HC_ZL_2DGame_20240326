@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 292943684}
   - component: {fileID: 292943687}
   - component: {fileID: 292943688}
+  - component: {fileID: 292943689}
   m_Layer: 0
   m_Name: "\u73A9\u5BB6_\u9A0E\u58EB"
   m_TagString: Untagged
@@ -280,6 +281,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1, y: 2.35, z: 0.2}
   m_Center: {x: -0.35, y: -1.325, z: 0}
+--- !u!114 &292943689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292943683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac19302aeb65d44095774a6d5d90b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &668443606
 GameObject:
   m_ObjectHideFlags: 0
@@ -53463,8 +53476,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 5
-  m_PointLightOuterRadius: 10
+  m_PointLightInnerRadius: 10
+  m_PointLightOuterRadius: 15
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
