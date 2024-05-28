@@ -30,6 +30,11 @@ namespace KID
         // string 字串：存放文字資料
         private string parMove = "移動數值";
         private string parJump = "觸發跳躍";
+
+        // 屬性可以被 Fungus 控制
+        // 屬性 Property 可以限制存取權限
+        // 定義一個資料類型為 bool 布林值的屬性，名稱是「canMove」預設值為否
+        public bool canMove { get; set; } = false;
         #endregion
 
         #region 事件區域
@@ -102,6 +107,9 @@ namespace KID
         /// <param name="v">玩家的垂直軸向</param>
         private void MoveAndAnimation(float h, float v)
         {
+            // 如果 canMove 為否 就 跳出
+            if (!canMove) return;
+
             // 剛體 的 加速度 = 三維向量
             rig.velocity = new Vector3(h * moveSpeed, rig.velocity.y, v * moveSpeed);
 
