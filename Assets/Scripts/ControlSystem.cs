@@ -35,6 +35,8 @@ namespace KID
         // 屬性 Property 可以限制存取權限
         // 定義一個資料類型為 bool 布林值的屬性，名稱是「canMove」預設值為否
         public bool canMove { get; set; } = false;
+
+        public bool canJump { get; set; } = false;
         #endregion
 
         #region 事件區域
@@ -138,6 +140,8 @@ namespace KID
         /// </summary>
         private void Jump()
         {
+            if (!canJump) return;
+
             // 如果 在地板上 並且 按下空白鍵 
             if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
             {
@@ -146,7 +150,27 @@ namespace KID
                 // 動畫 設定觸發參數(觸發參數名稱)
                 ani.SetTrigger(parJump);
             }
-        } 
+        }
+
+        /// <summary>
+        /// 停止控制
+        /// </summary>
+        public void StopControl()
+        {
+            canMove = false;
+            canJump = false;
+            rig.velocity = Vector3.zero;
+            ani.SetFloat(parMove, 0);
+        }
+
+        /// <summary>
+        /// 開啟控制
+        /// </summary>
+        public void StartControl()
+        {
+            canMove = true;
+            canJump = true;
+        }
         #endregion
     }
 }
