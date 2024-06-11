@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace KID
 {
     /// <summary>
-    /// ¼v¤l¸òÀH¨t²Î¡G¸òÀH«ü©wª«¥ó
+    /// å½±å­è·Ÿéš¨ç³»çµ±ï¼šè·Ÿéš¨æŒ‡å®šç‰©ä»¶
     /// </summary>
     public class ShadowFollow : MonoBehaviour
     {
-        [SerializeField, Header("­n¸òÀHªºª«¥ó")]
-        private Transform followTarget;
-        [SerializeField, Header("¼v¤lªº Y ¶b")]
+        [Header("è¦è·Ÿéš¨çš„ç‰©ä»¶")]
+        public Transform followTarget;
+        [SerializeField, Header("å½±å­çš„ Y è»¸")]
         private float shadowY;
 
         private void Update()
@@ -18,15 +18,15 @@ namespace KID
         }
 
         /// <summary>
-        /// ¸òÀH
+        /// è·Ÿéš¨
         /// </summary>
         private void Follow()
         {
-            // ®y¼Ğ = Àò±o¸òÀHª«¥óªº®y¼Ğ
+            // åº§æ¨™ = ç²å¾—è·Ÿéš¨ç‰©ä»¶çš„åº§æ¨™
             Vector3 point = followTarget.position;
-            // ³]©w®y¼Ğªº Y ¶b µ¥©ó ¼v¤lªº Y ¶b
+            // è¨­å®šåº§æ¨™çš„ Y è»¸ ç­‰æ–¼ å½±å­çš„ Y è»¸
             point.y = shadowY;
-            // ¦¹ª«¥óªº®y¼Ğ «ü©w¦¨ ®y¼Ğ
+            // æ­¤ç‰©ä»¶çš„åº§æ¨™ æŒ‡å®šæˆ åº§æ¨™
             transform.position = point;
         }
     }
