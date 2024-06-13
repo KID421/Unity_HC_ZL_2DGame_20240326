@@ -18,6 +18,20 @@ namespace KID
         private Animator ani;
         private string parMove = "移動數值";
 
+        private float xDistance => Mathf.Abs(player.position.x - transform.position.x);
+        private float zDistance => Mathf.Abs(player.position.z - transform.position.z);
+
+        private void OnDrawGizmos()
+        {
+            // transform.TransformDirection() 區域座標與世界座標轉換
+
+            Gizmos.color = new Color(1, 0.7f, 0.5f, 0.5f);
+            Gizmos.DrawCube(
+                transform.position + 
+                transform.TransformDirection(dataEnemy.attackAreaOffset),
+                dataEnemy.attackAreaSize);
+        }
+
         private void Awake()
         {
             // 透過名稱搜尋遊戲物件
@@ -34,6 +48,7 @@ namespace KID
             TrackPlayerZ();
             TrackPlayerX();
             UpdateMoveAnimation();
+            Attack();
         }
 
         /// <summary>
@@ -50,8 +65,6 @@ namespace KID
         /// </summary>
         private void TrackPlayerZ()
         {
-            // 計算玩家與敵人 Z 軸的距離 = 數學.絕對值(玩家Z - 敵人Z)
-            float zDistance = Mathf.Abs(player.position.z - transform.position.z);
             // 如果 Z 軸距離 <= Z 軸停止距離 就 跳出
             if (zDistance <= dataEnemy.stopDistanceZ) return;
 
@@ -68,7 +81,6 @@ namespace KID
         /// </summary>
         private void TrackPlayerX()
         {
-            float xDistance = Mathf.Abs(player.position.x - transform.position.x);
             if (xDistance <= dataEnemy.stopDistanceX) return;
 
             rig.velocity = 
@@ -83,6 +95,14 @@ namespace KID
         private void UpdateMoveAnimation()
         {
             ani.SetFloat(parMove, rig.velocity.magnitude / dataEnemy.moveSpeedXAxis);
+        }
+
+        private void Attack()
+        {
+            if (xDistance <= dataEnemy.attackStopDistance)
+            {
+                print("<color=#f11>開始攻擊!</color>");
+            }
         }
     }
 }

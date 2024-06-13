@@ -24,5 +24,9 @@ namespace KID
         public float attackTime = 0.3f;
         [Header("攻擊後搖時間"), Range(0, 5f)]
         public float attackAfterTime = 2f;
+        [Header("攻擊區域尺寸")]
+        public Vector3 attackAreaSize = Vector3.one;
+        [Header("攻擊區域位移")]
+        public Vector3 attackAreaOffset;
     }
 }
