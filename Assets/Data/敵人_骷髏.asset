@@ -16,9 +16,10 @@ MonoBehaviour:
   moveSpeedZAxis: 2
   stopDistanceX: 2
   stopDistanceZ: 0.5
-  attackStopDistance: 2.5
-  attackBeforeTime: 0.6
-  attackTime: 0.3
+  attackStopDistanceX: 2.5
+  attackStopDistanceZ: 0.5
+  attackBeforeTime: 0.35
+  attackTime: 0.2
   attackAfterTime: 2
-  attackAreaSize: {x: 2.25, y: 3, z: 0.5}
-  attackAreaOffset: {x: 2.3, y: 0.7, z: 0}
+  attackAreaSize: {x: 3, y: 3, z: 0.8}
+  attackAreaOffset: {x: 1.5, y: 0.7, z: 0}

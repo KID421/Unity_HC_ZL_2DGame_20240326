@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 namespace KID
 {
@@ -7,8 +8,11 @@ namespace KID
     /// </summary>
     public class EnemySystem : MonoBehaviour
     {
+        #region 資料區域
         [SerializeField, Header("敵人資料")]
         private DataEnemy dataEnemy;
+        [SerializeField, Header("可被攻擊的圖層")]
+        private LayerMask layerCanAttack = 1 << 6;
 
         private Transform player;
         private string playerName = "玩家_騎士";
@@ -17,17 +21,24 @@ namespace KID
         private Rigidbody rig;
         private Animator ani;
         private string parMove = "移動數值";
+        private string parAttack = "觸發攻擊";
+        private bool isAttacking;
+        private bool startCheckAttackArea;
 
         private float xDistance => Mathf.Abs(player.position.x - transform.position.x);
         private float zDistance => Mathf.Abs(player.position.z - transform.position.z);
+        #endregion
 
+        #region 事件區域
         private void OnDrawGizmos()
         {
             // transform.TransformDirection() 區域座標與世界座標轉換
+            // 如果 還沒有開始檢查攻擊區域 就跳出
+            if (!startCheckAttackArea) return;
 
             Gizmos.color = new Color(1, 0.7f, 0.5f, 0.5f);
             Gizmos.DrawCube(
-                transform.position + 
+                transform.position +
                 transform.TransformDirection(dataEnemy.attackAreaOffset),
                 dataEnemy.attackAreaSize);
         }
@@ -49,6 +60,26 @@ namespace KID
             TrackPlayerX();
             UpdateMoveAnimation();
             Attack();
+            CheckAttackArea();
+        }
+        #endregion
+
+        #region 方法區域
+        /// <summary>
+        /// 檢查攻擊區域
+        /// </summary>
+        private void CheckAttackArea()
+        {
+            // 如果 還沒有開始檢查攻擊區域 就跳出
+            if (!startCheckAttackArea) return;
+            // 碰到的物件 = 物理.繪製方塊(此物件座標+攻擊位移，尺寸/2，零角度)
+            Collider[] hits = Physics.OverlapBox(
+                transform.position +
+                transform.TransformDirection(dataEnemy.attackAreaOffset),
+                dataEnemy.attackAreaSize / 2, Quaternion.identity, layerCanAttack);
+
+            // 輸出打到的第一個物件 hits[0]
+            print($"<color=#3f3>碰到的物件：{hits[0]}</color>");
         }
 
         /// <summary>
@@ -56,6 +87,8 @@ namespace KID
         /// </summary>
         private void Flip()
         {
+            // 如果在攻擊中就跳出不翻面
+            if (isAttacking) return;
             float angle = player.position.x < transform.position.x ? angleLeft : angleRight;
             transform.eulerAngles = new Vector3(0, angle, 0);
         }
@@ -65,6 +98,8 @@ namespace KID
         /// </summary>
         private void TrackPlayerZ()
         {
+            // 如果在攻擊中就跳出不追蹤Z
+            if (isAttacking) return;
             // 如果 Z 軸距離 <= Z 軸停止距離 就 跳出
             if (zDistance <= dataEnemy.stopDistanceZ) return;
 
@@ -81,11 +116,13 @@ namespace KID
         /// </summary>
         private void TrackPlayerX()
         {
+            // 如果在攻擊中就跳出不追蹤X
+            if (isAttacking) return;
             if (xDistance <= dataEnemy.stopDistanceX) return;
 
-            rig.velocity = 
-                transform.right * dataEnemy.moveSpeedXAxis + 
-                Vector3.up * rig.velocity.y + 
+            rig.velocity =
+                transform.right * dataEnemy.moveSpeedXAxis +
+                Vector3.up * rig.velocity.y +
                 Vector3.forward * rig.velocity.z;
         }
 
@@ -97,12 +134,37 @@ namespace KID
             ani.SetFloat(parMove, rig.velocity.magnitude / dataEnemy.moveSpeedXAxis);
         }
 
+        /// <summary>
+        /// 攻擊
+        /// </summary>
         private void Attack()
         {
-            if (xDistance <= dataEnemy.attackStopDistance)
+            // 如果 在攻擊中 就 跳出
+            if (isAttacking) return;
+
+            // && 並且，輸入方式 Shift + 7
+            // 如果 x 距離 <= 攻擊距離 x 並且 z 距離 <= 攻擊距離 z 才會攻擊
+            if (xDistance <= dataEnemy.attackStopDistanceX && zDistance <= dataEnemy.stopDistanceZ)
             {
-                print("<color=#f11>開始攻擊!</color>");
+                // 啟動協同程序 (開始攻擊())
+                StartCoroutine(StartAttack());
             }
         }
+
+        /// <summary>
+        /// 開始攻擊
+        /// </summary>
+        private IEnumerator StartAttack()
+        {
+            isAttacking = true;
+            ani.SetTrigger(parAttack);
+            yield return new WaitForSeconds(dataEnemy.attackBeforeTime);
+            startCheckAttackArea = true;
+            yield return new WaitForSeconds(dataEnemy.attackTime);
+            startCheckAttackArea = false;
+            yield return new WaitForSeconds(dataEnemy.attackAfterTime);
+            isAttacking = false;
+        } 
+        #endregion
     }
 }

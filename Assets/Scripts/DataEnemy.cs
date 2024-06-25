@@ -16,8 +16,10 @@ namespace KID
         public float stopDistanceX = 1.3f;
         [Header("Z 軸停止距離"), Range(0, 1.5f)]
         public float stopDistanceZ = 0.8f;
-        [Header("攻擊停止距離"), Range(0, 3f)]
-        public float attackStopDistance = 2.5f;
+        [Header("攻擊停止距離 X"), Range(0, 3f)]
+        public float attackStopDistanceX = 2.5f;
+        [Header("攻擊停止距離 Z"), Range(0, 3f)]
+        public float attackStopDistanceZ = 0.5f;
         [Header("攻擊前搖時間"), Range(0, 2f)]
         public float attackBeforeTime = 0.6f;
         [Header("攻擊時間"), Range(0, 1f)]

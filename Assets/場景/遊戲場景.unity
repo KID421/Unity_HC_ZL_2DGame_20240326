@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 292943687}
   - component: {fileID: 292943688}
   - component: {fileID: 292943689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: "\u73A9\u5BB6_\u9A0E\u58EB"
   m_TagString: "\u73A9\u5BB6_\u9A0E\u58EB"
   m_Icon: {fileID: 0}
@@ -86108,6 +86108,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataEnemy: {fileID: 11400000, guid: 85b02c820b507514798df58287c4ad79, type: 2}
+  layerCanAttack:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1242152723
 GameObject:
   m_ObjectHideFlags: 0
@@ -92213,7 +92216,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885129000}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 6.8296294, z: -8.659259}
+  m_LocalPosition: {x: 0.0000009536743, y: 6.8296294, z: -8.659259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
