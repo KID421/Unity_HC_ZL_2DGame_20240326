@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: "\u8840\u91CF_\u73A9\u5BB6_\u9A0E\u58EB"
   m_EditorClassIdentifier: 
   hp: 1000
+  invincibleTime: 0.2

@@ -66,23 +66,6 @@ namespace KID
 
         #region 方法區域
         /// <summary>
-        /// 檢查攻擊區域
-        /// </summary>
-        private void CheckAttackArea()
-        {
-            // 如果 還沒有開始檢查攻擊區域 就跳出
-            if (!startCheckAttackArea) return;
-            // 碰到的物件 = 物理.繪製方塊(此物件座標+攻擊位移，尺寸/2，零角度)
-            Collider[] hits = Physics.OverlapBox(
-                transform.position +
-                transform.TransformDirection(dataEnemy.attackAreaOffset),
-                dataEnemy.attackAreaSize / 2, Quaternion.identity, layerCanAttack);
-
-            // 輸出打到的第一個物件 hits[0]
-            print($"<color=#3f3>碰到的物件：{hits[0]}</color>");
-        }
-
-        /// <summary>
         /// 翻面
         /// </summary>
         private void Flip()
@@ -164,7 +147,31 @@ namespace KID
             startCheckAttackArea = false;
             yield return new WaitForSeconds(dataEnemy.attackAfterTime);
             isAttacking = false;
-        } 
+        }
+
+        /// <summary>
+        /// 檢查攻擊區域
+        /// </summary>
+        private void CheckAttackArea()
+        {
+            // 如果 還沒有開始檢查攻擊區域 就跳出
+            if (!startCheckAttackArea) return;
+            // 碰到的物件 = 物理.繪製方塊(此物件座標+攻擊位移，尺寸/2，零角度)
+            Collider[] hits = Physics.OverlapBox(
+                transform.position +
+                transform.TransformDirection(dataEnemy.attackAreaOffset),
+                dataEnemy.attackAreaSize / 2, Quaternion.identity, layerCanAttack);
+
+            // 輸出打到的第一個物件 hits[0]
+            print($"<color=#3f3>碰到的物件：{hits[0]}</color>");
+
+            // 如果擊中的物件數量超過 0 個
+            if (hits.Length > 0)
+            {
+                // 對擊中物件造成傷害(50)
+                hits[0].gameObject.GetComponent<HpPlayer>().Damage(50);
+            }
+        }
         #endregion
     }
 }

@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 292943687}
   - component: {fileID: 292943688}
   - component: {fileID: 292943689}
+  - component: {fileID: 292943690}
   m_Layer: 6
   m_Name: "\u73A9\u5BB6_\u9A0E\u58EB"
   m_TagString: "\u73A9\u5BB6_\u9A0E\u58EB"
@@ -302,6 +303,19 @@ MonoBehaviour:
   layerGround:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &292943690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292943683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c6f9db819820d4ca912906104b1341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataHp: {fileID: 11400000, guid: 658b9243437f67c4c9921468669170ae, type: 2}
 --- !u!1 &343407401
 GameObject:
   m_ObjectHideFlags: 0
