@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataHp: {fileID: 11400000, guid: 658b9243437f67c4c9921468669170ae, type: 2}
+  imgHp: {fileID: 1357272610}
+  textHp: {fileID: 1688815742}
 --- !u!1 &343407401
 GameObject:
   m_ObjectHideFlags: 0
@@ -92230,7 +92232,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885129000}
   m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0.0000009536743, y: 6.8296294, z: -8.659259}
+  m_LocalPosition: {x: -0.0000009536743, y: 6.8296294, z: -8.659259}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
