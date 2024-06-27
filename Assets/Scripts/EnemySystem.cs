@@ -162,14 +162,17 @@ namespace KID
                 transform.TransformDirection(dataEnemy.attackAreaOffset),
                 dataEnemy.attackAreaSize / 2, Quaternion.identity, layerCanAttack);
 
-            // 輸出打到的第一個物件 hits[0]
-            print($"<color=#3f3>碰到的物件：{hits[0]}</color>");
-
             // 如果擊中的物件數量超過 0 個
             if (hits.Length > 0)
             {
-                // 對擊中物件造成傷害(50)
-                hits[0].gameObject.GetComponent<HpPlayer>().Damage(50);
+                // 攻擊浮動 = 隨機的範圍(0，攻擊力 * 浮動百分比)
+                float attackFloat = Random.Range(0, dataEnemy.attack * dataEnemy.attackFloatValue);
+                // 攻擊力 = 攻擊力 + 攻擊浮動
+                float attack = dataEnemy.attack + attackFloat;
+                // 取整數
+                attack = Mathf.FloorToInt(attack);
+                // 對擊中物件造成傷害(攻擊力)
+                hits[0].gameObject.GetComponent<HpPlayer>().Damage(attack);
             }
         }
         #endregion

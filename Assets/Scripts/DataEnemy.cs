@@ -30,5 +30,9 @@ namespace KID
         public Vector3 attackAreaSize = Vector3.one;
         [Header("攻擊區域位移")]
         public Vector3 attackAreaOffset;
+        [Header("攻擊力"), Range(0, 10000)]
+        public float attack;
+        [Header("攻擊力浮動百分比"), Range(0, 1)]
+        public float attackFloatValue;
     }
 }
