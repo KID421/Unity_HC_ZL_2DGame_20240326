@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
+using System.Collections;
 
 namespace KID
 {
@@ -21,6 +21,7 @@ namespace KID
         private bool isInvicible;
         private Animator ani;
         private string parDead = "觸發死亡";
+        private bool isDead;
 
         private void Awake()
         {
@@ -37,6 +38,8 @@ namespace KID
         /// <param name="damage">受到的傷害</param>
         public virtual void Damage(float damage)
         {
+            // 如果 死亡 就跳出
+            if (isDead) return;
             // 如果 無敵狀態 就跳出
             if (isInvicible) return;
 
@@ -50,6 +53,8 @@ namespace KID
 
             StartCoroutine(Invicible());
             hp -= damage;
+            // 血量 = 數學函式.夾住(血量，0，最大值) 將血量夾在 0 ~ hpMax 之間
+            hp = Mathf.Clamp(hp, 0, hpMax);
             if (hp <= 0) Dead();
             print($"<color=#f36>{name} 血量剩下：{hp}</color>");
         }
@@ -67,8 +72,10 @@ namespace KID
         /// <summary>
         /// 死亡
         /// </summary>
-        private void Dead()
+        protected virtual void Dead()
         {
+            // 已經死亡
+            isDead = true;
             ani.SetTrigger(parDead);
             print($"<color=#f36>{name} 死亡</color>");
         }

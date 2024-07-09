@@ -13,6 +13,8 @@ namespace KID
         private Image imgHp;
         [SerializeField, Header("文字血量")]
         private TMP_Text textHp;
+        [SerializeField, Header("控制系統")]
+        private ControlSystem controlSystem;
 
         private void Start()
         {
@@ -31,6 +33,13 @@ namespace KID
             // 覆類別原本的內容
             base.Damage(damage);
             UpdateUI();
+        }
+
+        protected override void Dead()
+        {
+            base.Dead();
+            // 關閉控制系統
+            controlSystem.enabled = false;
         }
     }
 }
