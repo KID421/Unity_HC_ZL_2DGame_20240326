@@ -18,14 +18,14 @@ MonoBehaviour:
     attackFloatValue: 0.1
     attackBeforeTime: 0.6
     attackTime: 0.3
-    attackAreaSize: {x: 1, y: 1, z: 1}
-    attackAreaOffset: {x: 0, y: 0, z: 0}
-    isDraw: 1
+    attackAreaSize: {x: 2.4, y: 2.2, z: 1}
+    attackAreaOffset: {x: 2.15, y: 0.2, z: 0}
+    isDraw: 0
   - parAttack: "\u89F8\u767C\u653B\u64CA\u4E8C\u968E\u6BB5"
     attack: 500
     attackFloatValue: 0
     attackBeforeTime: 0.6
     attackTime: 0.3
-    attackAreaSize: {x: 1, y: 1, z: 1}
-    attackAreaOffset: {x: 0, y: 0, z: 0}
-    isDraw: 0
+    attackAreaSize: {x: 4.64, y: 2.51, z: 1}
+    attackAreaOffset: {x: 0.6, y: 0.22, z: 0}
+    isDraw: 1
