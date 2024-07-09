@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 292943688}
   - component: {fileID: 292943689}
   - component: {fileID: 292943690}
+  - component: {fileID: 292943691}
   m_Layer: 6
   m_Name: "\u73A9\u5BB6_\u9A0E\u58EB"
   m_TagString: "\u73A9\u5BB6_\u9A0E\u58EB"
@@ -322,6 +323,19 @@ MonoBehaviour:
   imgHp: {fileID: 1357272610}
   textHp: {fileID: 1688815742}
   controlSystem: {fileID: 292943689}
+--- !u!114 &292943691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292943683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76beff112c5b0cb4e889756cb869fa6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataAttack: {fileID: 11400000, guid: 2058effae04eb8f4c9cd576b9972363c, type: 2}
 --- !u!1 &343407401
 GameObject:
   m_ObjectHideFlags: 0
@@ -85964,7 +85978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1190040258
 SpriteRenderer:
   m_ObjectHideFlags: 0
