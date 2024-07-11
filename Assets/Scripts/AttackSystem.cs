@@ -10,6 +10,8 @@ namespace KID
     {
         [SerializeField, Header("攻擊資料")]
         private DataAttack dataAttack;
+        [SerializeField, Header("可攻擊的圖層")]
+        private LayerMask attackLayer = 1 << 7;
 
         private Animator ani;
         private int attackIndex = -1;
@@ -95,8 +97,34 @@ namespace KID
         {
             yield return new WaitForSeconds(attackBefore);
             attack.isDraw = true;
+            CheckAttackArea();
             yield return new WaitForSeconds(attackTime);
             attack.isDraw = false;
+        }
+
+        /// <summary>
+        /// 檢查攻擊區域
+        /// </summary>
+        private void CheckAttackArea()
+        {
+            // 碰到的物件 = 物理.繪製方塊(此物件座標+攻擊位移，尺寸/2，零角度)
+            Collider[] hits = Physics.OverlapBox(
+                transform.position +
+                transform.TransformDirection(attack.attackAreaOffset),
+                attack.attackAreaSize / 2, Quaternion.identity, attackLayer);
+
+            // 如果擊中的物件數量超過 0 個
+            if (hits.Length > 0)
+            {
+                // 攻擊浮動 = 隨機的範圍(0，攻擊力 * 浮動百分比)
+                float attackFloat = Random.Range(0, attack.attack * attack.attackFloatValue);
+                // 攻擊力 = 攻擊力 + 攻擊浮動
+                float attackValue = attack.attack + attackFloat;
+                // 取整數
+                attackValue = Mathf.FloorToInt(attackValue);
+                // 對擊中物件造成傷害(攻擊力)
+                hits[0].gameObject.GetComponent<HpEnemy>().Damage(attackValue);
+            }
         }
     }
 }

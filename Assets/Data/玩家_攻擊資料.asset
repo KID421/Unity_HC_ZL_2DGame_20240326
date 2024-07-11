@@ -21,7 +21,7 @@ MonoBehaviour:
     attackAreaSize: {x: 2.4, y: 2.2, z: 1}
     attackAreaOffset: {x: 2.15, y: 0.2, z: 0}
     isDraw: 0
-    attackAnimationTime: 0.6
+    attackAnimationTime: 0.5
   - parAttack: "\u89F8\u767C\u653B\u64CA\u4E8C\u968E\u6BB5"
     attack: 500
     attackFloatValue: 0
