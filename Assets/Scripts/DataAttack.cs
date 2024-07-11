@@ -34,5 +34,7 @@ namespace KID
         public Vector3 attackAreaOffset;
         [Header("是否繪製")]
         public bool isDraw;
+        [Header("攻擊動畫時間：連段時間"), Range(0, 2)]
+        public float attackAnimationTime;
     }
 }
