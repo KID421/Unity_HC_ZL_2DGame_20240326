@@ -16,6 +16,7 @@ namespace KID
         private Animator ani;
         private int attackIndex = -1;
         private bool canAttack = true;
+        private ControlSystem controlSystem;
 
         private void OnDrawGizmos()
         {
@@ -39,6 +40,10 @@ namespace KID
         private void Awake()
         {
             ani = GetComponent<Animator>();
+            // 如果此元件與要取得的元件在同一個物件上可以使用 GetComponent
+            controlSystem = GetComponent<ControlSystem>();
+            // 這個也可以
+            // controlSystem = FindObjectOfType<ControlSystem>();
         }
 
         private void Update()
@@ -93,13 +98,20 @@ namespace KID
             if (finalAttack) canAttack = true;
         }
 
+        /// <summary>
+        /// 攻擊檢查
+        /// </summary>
         private IEnumerator AttackCheck(float attackBefore, float attackTime)
         {
+            // 攻擊開始 關閉控制器
+            controlSystem.StopControl();
             yield return new WaitForSeconds(attackBefore);
             attack.isDraw = true;
             CheckAttackArea();
             yield return new WaitForSeconds(attackTime);
             attack.isDraw = false;
+            // 攻擊結束 開啟控制器
+            controlSystem.StartControl();
         }
 
         /// <summary>
