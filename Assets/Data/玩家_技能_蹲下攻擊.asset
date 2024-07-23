@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d44b2c6eaa1ba42b8e3c81022ed1bb, type: 3}
+  m_Name: "\u73A9\u5BB6_\u6280\u80FD_\u8E72\u4E0B\u653B\u64CA"
+  m_EditorClassIdentifier: 
+  skillKey: 102
+  skillParameter: "\u89F8\u767C\u6280\u80FD_\u8E72\u4E0B\u653B\u64CA"
+  skillCost: 30
+  skillDamage: 700
+  skillEffect: {fileID: 1502383984483770952, guid: ab662bc16fdc91b438b095a3b7f6b1fd,
+    type: 3}
