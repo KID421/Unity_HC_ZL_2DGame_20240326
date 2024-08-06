@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2664577435699596555}
   - component: {fileID: -1493973302461587492}
   - component: {fileID: -6196237928328946803}
+  - component: {fileID: -8317825125024314333}
   m_Layer: 0
   m_Name: "\u7279\u6548_\u6280\u80FD_\u8E72\u4E0B\u653B\u64CA"
   m_TagString: Untagged
@@ -4735,7 +4736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9205bc1bbacc90040a998067b5643d16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBehavior: 2
+  clearBehavior: 1
   cameraShake:
     enabled: 0
     useMainCamera: 1
@@ -4907,7 +4908,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1978f2f6a1ba9d7458146787e96f308b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transformPlayer: {fileID: 0}
   flyPower: {x: 300, y: 0, z: 0}
+--- !u!114 &-8317825125024314333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502383984483770952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02016b8e401aec044bd50aaac5a53820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 2
 --- !u!1 &4768607542607067724
 GameObject:
   m_ObjectHideFlags: 0
