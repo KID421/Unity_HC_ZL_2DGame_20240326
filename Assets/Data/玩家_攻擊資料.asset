@@ -24,7 +24,7 @@ MonoBehaviour:
     attackAnimationTime: 0.5
   - parAttack: "\u89F8\u767C\u653B\u64CA\u4E8C\u968E\u6BB5"
     attack: 500
-    attackFloatValue: 0
+    attackFloatValue: 0.5
     attackBeforeTime: 0.2
     attackTime: 0.3
     attackAreaSize: {x: 4.64, y: 2.51, z: 1}

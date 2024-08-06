@@ -12,11 +12,11 @@ namespace KID
         [SerializeField, Header("飛行力道")]
         private Vector3 flyPower;
 
-        private Rigidbody2D rig;
+        private Rigidbody rig;
 
         private void Start()
         {
-            rig = GetComponent<Rigidbody2D>();
+            rig = GetComponent<Rigidbody>();
             // 根據玩家的座標飛行
             rig.AddForce(
                 transformPlayer.right * flyPower.x + 
