@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace KID
 {
@@ -7,9 +8,36 @@ namespace KID
     /// </summary>
     public class PropManager : MonoBehaviour
     {
+        // 常用設計模式：單例模式 - 此系統在遊戲內只有一個存在並且需要被其他人存取
+        // 公開靜態 instance 單例模式：允許外部存取
+        public static PropManager instance
+        {
+            // 獲得單例模式的實體物件
+            get
+            {
+                // 如果 _instance 是空的
+                if (_instance == null)
+                { 
+                    // 就尋找場景上帶有 PropManager 的實體並儲存到 _instnace;
+                    _instance = FindObjectOfType<PropManager>();
+                }
+                // 傳回 _instance
+                return _instance;
+            }
+        }
+        // 用來儲存 PropManager 資料的變數
+        private static PropManager _instance;
+
+        // 事件 event：在特定時間點會被執行的程式，可以讓需要的系統訂閱並做出回饋
+        // 事件習慣用 on 開頭
+        // 吃到血量道具與魔力道具的事件
+        public EventHandler onEatHp;
+        public EventHandler onEatMp;
+
         private string propName = "道具";
-        private string propHp = "道具_血量藥水";
-        private string propMp = "道具_魔力藥水";
+        // 放在 switch 要添加 const 常數，常數為不能改變的值
+        private const string propHp = "道具_血量藥水(Clone)";
+        private const string propMp = "道具_魔力藥水(Clone)";
 
         // 碰撞事件 OCE
         // 碰到物件後會執行一次
@@ -25,9 +53,26 @@ namespace KID
             }
         }
 
+        /// <summary>
+        /// 吃道具功能：觸發吃道具事件
+        /// </summary>
+        /// <param name="prop">道具名稱</param>
         private void EatProp(string prop)
         {
-
+            // switch 判斷式
+            switch (prop)
+            {
+                case propHp:
+                    print("吃到血量道具");
+                    // 呼叫事件(執行事件者，傳出去的資料)
+                    // ? 如果沒有人訂閱就不呼叫
+                    onEatHp?.Invoke(this, null);
+                    break;
+                case propMp:
+                    print("吃到魔力道具");
+                    onEatMp?.Invoke(this, null);
+                    break;
+            }
         }
     }
 }
