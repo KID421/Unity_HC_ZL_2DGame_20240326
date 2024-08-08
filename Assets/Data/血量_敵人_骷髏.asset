@@ -9,8 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 010ab6152911a8a40be320253d5e3e39, type: 3}
+  m_Script: {fileID: 11500000, guid: fb88867d81b69b24eb6fd71d526f9624, type: 3}
   m_Name: "\u8840\u91CF_\u6575\u4EBA_\u9AB7\u9ACF"
   m_EditorClassIdentifier: 
   hp: 500
-  invincibleTime: 0.1
+  invincibleTime: 0.2
+  dropObjects:
+  - prefab: {fileID: 3739427510368355509, guid: 857b502dcef3f3446b23bba19e4718ce,
+      type: 3}
+    probability: 1
+    offsetY: 3
+  - prefab: {fileID: 8913262613474023978, guid: de7d01a7f70b1414d849cb66d509bb9a,
+      type: 3}
+    probability: 1
+    offsetY: 3.5
+  upMin: 50
+  upMax: 200
+  horizontalMin: -100
+  horizontalMax: 100

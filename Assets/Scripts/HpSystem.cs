@@ -10,7 +10,7 @@ namespace KID
     public class HpSystem : MonoBehaviour
     {
         [SerializeField, Header("血量資料")]
-        private DataHp dataHp;
+        protected DataHp dataHp;
         [SerializeField, Header("預製物：畫布傷害值")]
         private GameObject prefabDamage;
         [SerializeField, Header("傷害值位移")]
