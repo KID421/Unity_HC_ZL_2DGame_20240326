@@ -400,6 +400,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ffa74aa1e9767048b7709ef960a55ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sounds:
+  - {fileID: 8300000, guid: bd7101caefbb3f543a823894d4de2bf9, type: 3}
+  - {fileID: 8300000, guid: cd6ae9d068614294186ecd6633c1daa8, type: 3}
+  - {fileID: 8300000, guid: 572c1a3a3d6c52c41b416b708f323dc3, type: 3}
+  - {fileID: 8300000, guid: f540f9debd1338f46884cbe0175e25f8, type: 3}
+  - {fileID: 8300000, guid: 971feeee4a87aa44f8acff8ee83aca49, type: 3}
+  - {fileID: 8300000, guid: 272d44981085b334c94c1e9404f85b8a, type: 3}
+  - {fileID: 8300000, guid: 968d6dc37dafffc4ba6e7f6ba0f535d9, type: 3}
+  - {fileID: 8300000, guid: 94350eab99e7a7a448950d6c6ec2bd47, type: 3}
+  - {fileID: 8300000, guid: 92528b6c1874b784b8a2dcfe99385fa0, type: 3}
 --- !u!82 &335951657
 AudioSource:
   m_ObjectHideFlags: 0

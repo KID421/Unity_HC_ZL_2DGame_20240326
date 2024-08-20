@@ -15,6 +15,6 @@ MonoBehaviour:
   skillKey: 102
   skillParameter: "\u89F8\u767C\u6280\u80FD_\u8E72\u4E0B\u653B\u64CA"
   skillCost: 30
-  skillDamage: 700
+  skillDamage: 100
   skillEffect: {fileID: 1502383984483770952, guid: ab662bc16fdc91b438b095a3b7f6b1fd,
     type: 3}

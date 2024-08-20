@@ -25,7 +25,7 @@ namespace KID
 
         private void EatHpProp(object sender, float e)
         {
-            print($"<color=#f3d>玩家血量系統：開始補血 {e}</color>");
+            // print($"<color=#f3d>玩家血量系統：開始補血 {e}</color>");
             hp += e;
             // 將血量夾在 0 ~ 最大值之間
             hp = Mathf.Clamp(hp, 0, hpMax);
@@ -44,6 +44,7 @@ namespace KID
             // 覆類別原本的內容
             base.Damage(damage);
             UpdateUI();
+            SoundManager.instance.PlaySound(SoundType.PlayerHurt, 0.5f, 0.7f);
         }
 
         protected override void Dead()
@@ -51,6 +52,7 @@ namespace KID
             base.Dead();
             // 關閉控制系統
             controlSystem.enabled = false;
+            SoundManager.instance.PlaySound(SoundType.PlayerDead, 0.8f, 1.3f);
         }
     }
 }

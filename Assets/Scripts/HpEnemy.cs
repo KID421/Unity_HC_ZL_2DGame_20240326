@@ -25,6 +25,12 @@ namespace KID
             rig = GetComponent<Rigidbody>();
         }
 
+        public override void Damage(float damage)
+        {
+            base.Damage(damage);
+            SoundManager.instance.PlaySound(SoundType.EnemyHurt, 0.8f, 1.3f);
+        }
+
         protected override void Dead()
         {
             base.Dead();
@@ -37,6 +43,7 @@ namespace KID
             // 約束 剛體 全部的凍結
             rig.constraints = RigidbodyConstraints.FreezeAll;
 
+            SoundManager.instance.PlaySound(SoundType.EnemyDead, 0.8f, 1.3f);
             DropObject();
         }
 
@@ -53,6 +60,8 @@ namespace KID
                 // Random.value 傳回介於 0 ~ 1 之間的隨機數字，例如：0.1, 0.22, 0.9
                 if (Random.value <= dropObject.probability)
                 {
+                    SoundManager.instance.PlaySound(SoundType.DropProp);
+
                     // 就生成掉落物件
                     GameObject tempDrop = Instantiate(
                         dropObject.prefab,

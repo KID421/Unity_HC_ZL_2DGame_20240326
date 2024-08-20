@@ -56,7 +56,7 @@ namespace KID
             // 血量 = 數學函式.夾住(血量，0，最大值) 將血量夾在 0 ~ hpMax 之間
             hp = Mathf.Clamp(hp, 0, hpMax);
             if (hp <= 0) Dead();
-            print($"<color=#f36>{name} 血量剩下：{hp}</color>");
+            // print($"<color=#f36>{name} 血量剩下：{hp}</color>");
         }
 
         private IEnumerator Invicible()
@@ -77,7 +77,7 @@ namespace KID
             // 已經死亡
             isDead = true;
             ani.SetTrigger(parDead);
-            print($"<color=#f36>{name} 死亡</color>");
+            // print($"<color=#f36>{name} 死亡</color>");
         }
     }
 }

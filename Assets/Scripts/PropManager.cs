@@ -60,17 +60,18 @@ namespace KID
         /// <param name="prop">道具名稱</param>
         private void EatProp(string prop, float value)
         {
+            // 音效管理器的實體物件 執行 播放音效功能
+            SoundManager.instance.PlaySound(SoundType.EatProp, 0.8f, 1.3f);
+
             // switch 判斷式
             switch (prop)
             {
                 case propHp:
-                    print("吃到血量道具");
                     // 呼叫事件(執行事件者，傳出去的資料)
                     // ? 如果沒有人訂閱就不呼叫
                     onEatHp?.Invoke(this, value);
                     break;
                 case propMp:
-                    print("吃到魔力道具");
                     onEatMp?.Invoke(this, value);
                     break;
             }

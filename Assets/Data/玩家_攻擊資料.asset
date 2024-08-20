@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - parAttack: "\u89F8\u767C\u653B\u64CA"
-    attack: 200
-    attackFloatValue: 0.1
+    attack: 100
+    attackFloatValue: 0.2
     attackBeforeTime: 0.1
     attackTime: 0.3
     attackAreaSize: {x: 2.5, y: 2.2, z: 1}
@@ -23,7 +23,7 @@ MonoBehaviour:
     isDraw: 0
     attackAnimationTime: 0.5
   - parAttack: "\u89F8\u767C\u653B\u64CA\u4E8C\u968E\u6BB5"
-    attack: 500
+    attack: 200
     attackFloatValue: 0.5
     attackBeforeTime: 0.2
     attackTime: 0.3
