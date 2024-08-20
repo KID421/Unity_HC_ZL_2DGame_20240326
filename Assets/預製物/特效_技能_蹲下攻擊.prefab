@@ -39,7 +39,7 @@ Transform:
   - {fileID: 8950568899938763047}
   - {fileID: 8689191922327149506}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &9220661674635415265
 ParticleSystem:
@@ -49,7 +49,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502383984483770952}
   serializedVersion: 8
-  lengthInSec: 0.5
+  lengthInSec: 0.8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -124,7 +124,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 0.8
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2
@@ -5000,7 +5000,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4768607542607067724}
   serializedVersion: 8
-  lengthInSec: 0.5
+  lengthInSec: 0.8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -5074,8 +5074,8 @@ ParticleSystem:
     enabled: 1
     startLifetime:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.6
+      minMaxState: 0
+      scalar: 0.8
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -9849,7 +9849,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7472423704277909642}
   serializedVersion: 8
-  lengthInSec: 0.5
+  lengthInSec: 0.8
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 1
@@ -9924,7 +9924,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.6
+      scalar: 0.8
       minScalar: 0.5
       maxCurve:
         serializedVersion: 2

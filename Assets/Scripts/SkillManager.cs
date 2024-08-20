@@ -27,11 +27,20 @@ namespace KID
             ani = GetComponent<Animator>();
             mp = mpMax;
             UpdateUI();
+            // 訂閱道具管理器 的 吃魔力道具 事件，玩家吃到後會執行 EatMpProp 功能
+            PropManager.instance.onEatMp += EatMpProp;
         }
 
         private void Update()
         {
             SkillInput();
+        }
+
+        private void EatMpProp(object sender, float e)
+        {
+            mp += e;
+            mp = Mathf.Clamp(mp, 0, mpMax);
+            UpdateUI();
         }
 
         private void UpdateUI()

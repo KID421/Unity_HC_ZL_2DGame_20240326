@@ -31,8 +31,8 @@ namespace KID
         // 事件 event：在特定時間點會被執行的程式，可以讓需要的系統訂閱並做出回饋
         // 事件習慣用 on 開頭
         // 吃到血量道具與魔力道具的事件
-        public EventHandler onEatHp;
-        public EventHandler onEatMp;
+        public event EventHandler<float> onEatHp;
+        public event EventHandler<float> onEatMp;
 
         private string propName = "道具";
         // 放在 switch 要添加 const 常數，常數為不能改變的值
@@ -47,7 +47,8 @@ namespace KID
             // 如果 碰到物件的名稱 有"道具"這兩個字
             if (collision.gameObject.name.Contains(propName))
             {
-                EatProp(collision.gameObject.name);
+                float value = collision.gameObject.GetComponent<Prop>().value;
+                EatProp(collision.gameObject.name, value);
                 // 刪除道具物件
                 Destroy(collision.gameObject);
             }
@@ -57,7 +58,7 @@ namespace KID
         /// 吃道具功能：觸發吃道具事件
         /// </summary>
         /// <param name="prop">道具名稱</param>
-        private void EatProp(string prop)
+        private void EatProp(string prop, float value)
         {
             // switch 判斷式
             switch (prop)
@@ -66,11 +67,11 @@ namespace KID
                     print("吃到血量道具");
                     // 呼叫事件(執行事件者，傳出去的資料)
                     // ? 如果沒有人訂閱就不呼叫
-                    onEatHp?.Invoke(this, null);
+                    onEatHp?.Invoke(this, value);
                     break;
                 case propMp:
                     print("吃到魔力道具");
-                    onEatMp?.Invoke(this, null);
+                    onEatMp?.Invoke(this, value);
                     break;
             }
         }

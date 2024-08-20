@@ -19,6 +19,17 @@ namespace KID
         private void Start()
         {
             UpdateUI();
+            // 獲得單例模式：腳本名稱.instance.成員 (公開的變數、方法...)
+            PropManager.instance.onEatHp += EatHpProp;
+        }
+
+        private void EatHpProp(object sender, float e)
+        {
+            print($"<color=#f3d>玩家血量系統：開始補血 {e}</color>");
+            hp += e;
+            // 將血量夾在 0 ~ 最大值之間
+            hp = Mathf.Clamp(hp, 0, hpMax);
+            UpdateUI();
         }
 
         private void UpdateUI()
