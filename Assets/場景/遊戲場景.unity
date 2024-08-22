@@ -28411,7 +28411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goFungusStartTutorial: {fileID: 702002846}
-  fadeInInterval: 0.05
+  fadeInInterval: 0.1
 --- !u!1 &833552634
 GameObject:
   m_ObjectHideFlags: 0

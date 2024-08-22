@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace KID
 {
@@ -10,6 +11,16 @@ namespace KID
     /// </summary>
     public class GameManager : MonoBehaviour
     {
+        public static GameManager instance
+        {
+            get
+            {
+                if (_instance == null) _instance = FindObjectOfType<GameManager>(); 
+                return _instance;            
+            }
+        }
+        private static GameManager _instance;
+
         [SerializeField, Header("Fungus 開頭與教學")]
         private GameObject goFungusStartTutorial;
         [SerializeField, Header("結束畫面淡入間隔"), Range(0, 0.1f)]
@@ -52,6 +63,32 @@ namespace KID
 
             // 測試：發佈遊戲前刪除
             Test();
+        }
+
+        /// <summary>
+        /// 開始淡入
+        /// </summary>
+        public void StartFadeIn()
+        {
+            StartCoroutine(FadeIn());
+        }
+
+        /// <summary>
+        /// 淡入結束畫面
+        /// </summary>
+        private IEnumerator FadeIn()
+        {
+            // 執行十次
+            for (int i = 0; i < 10; i++)
+            {
+                // 透明度累加 0.1
+                groupFinal.alpha += 0.1f;
+                // 等待
+                yield return waitFadeInInterval;
+            }
+            // 啟動互動與遮擋
+            groupFinal.interactable = true;
+            groupFinal.blocksRaycasts = true;
         }
 
         private void Replay()

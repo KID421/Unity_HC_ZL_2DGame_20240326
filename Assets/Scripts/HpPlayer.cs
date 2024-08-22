@@ -13,11 +13,17 @@ namespace KID
         private Image imgHp;
         [SerializeField, Header("文字血量")]
         private TMP_Text textHp;
-        [SerializeField, Header("控制系統")]
+
         private ControlSystem controlSystem;
+        private AttackSystem attackSystem;
+        private SkillManager skillManager;
 
         private void Start()
         {
+            controlSystem = GetComponent<ControlSystem>();
+            attackSystem = GetComponent<AttackSystem>();
+            skillManager = GetComponent<SkillManager>();
+
             UpdateUI();
             // 獲得單例模式：腳本名稱.instance.成員 (公開的變數、方法...)
             PropManager.instance.onEatHp += EatHpProp;
@@ -52,9 +58,13 @@ namespace KID
         protected override void Dead()
         {
             base.Dead();
-            // 關閉控制系統
+            // 關閉控制、攻擊與技能系統
             controlSystem.enabled = false;
+            attackSystem.enabled = false;
+            skillManager.enabled = false;
             SoundManager.instance.PlaySound(SoundType.PlayerDead, 0.8f, 1.3f);
+            // 呼叫 GM 的開始淡入
+            GameManager.instance.StartFadeIn();
         }
     }
 }
