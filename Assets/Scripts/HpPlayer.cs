@@ -41,10 +41,12 @@ namespace KID
         // override 覆寫：覆寫覆類別有虛擬關鍵字的成員
         public override void Damage(float damage)
         {
+            if (hp <= 0) return;
+            if (isInvicible) return;
+            SoundManager.instance.PlaySound(SoundType.PlayerHurt, 0.5f, 0.7f);
             // 覆類別原本的內容
             base.Damage(damage);
             UpdateUI();
-            SoundManager.instance.PlaySound(SoundType.PlayerHurt, 0.5f, 0.7f);
         }
 
         protected override void Dead()

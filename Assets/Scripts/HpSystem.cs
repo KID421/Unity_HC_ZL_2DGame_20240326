@@ -18,7 +18,7 @@ namespace KID
 
         // protected 保護：允許此類別與子類別存取
         protected float hp, hpMax;
-        private bool isInvicible;
+        protected bool isInvicible;
         private Animator ani;
         private string parDead = "觸發死亡";
         private bool isDead;

@@ -17,6 +17,7 @@ namespace KID
         private int attackIndex = -1;
         private bool canAttack = true;
         private ControlSystem controlSystem;
+        private Attack attack;
 
         private void OnDrawGizmos()
         {
@@ -51,8 +52,9 @@ namespace KID
             Attack();
         }
 
-        private Attack attack;
-
+        /// <summary>
+        /// 攻擊
+        /// </summary>
         private void Attack()
         {
             // 如果不能攻擊 就跳出
@@ -76,7 +78,17 @@ namespace KID
                 StopAllCoroutines();
                 StartCoroutine(BreakAttack(attack.attackAnimationTime, attackIndex == dataAttack.attacks.Length - 1));
                 StartCoroutine(AttackCheck(attack.attackBeforeTime, attack.attackTime));
+                PlaySound();
             }
+        }
+
+        /// <summary>
+        /// 播放音效
+        /// </summary>
+        private void PlaySound()
+        {
+            if (attackIndex == 0) SoundManager.instance.PlaySound(SoundType.Attack1);
+            else if (attackIndex == 1) SoundManager.instance.PlaySound(SoundType.Attack2);
         }
 
         /// <summary>

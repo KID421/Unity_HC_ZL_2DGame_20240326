@@ -76,8 +76,17 @@ namespace KID
 
                     mp -= dataSkills[i].skillCost;
                     UpdateUI();
+                    PlaySound(i);
                 }
             }
+        }
+
+        /// <summary>
+        /// 播放音效
+        /// </summary>
+        private void PlaySound(int index)
+        {
+            if (index == 0) SoundManager.instance.PlaySound(SoundType.Skill1, 0.3f, 0.7f);
         }
     }
 }
