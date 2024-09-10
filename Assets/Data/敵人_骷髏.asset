@@ -23,5 +23,5 @@ MonoBehaviour:
   attackAfterTime: 1.5
   attackAreaSize: {x: 3, y: 3, z: 0.8}
   attackAreaOffset: {x: 1.5, y: 0.7, z: 0}
-  attack: 10000
+  attack: 100
   attackFloatValue: 0.5

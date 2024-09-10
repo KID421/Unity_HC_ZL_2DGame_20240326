@@ -62,7 +62,7 @@ namespace KID
             waitFadeInInterval = new WaitForSeconds(fadeInInterval);
 
             // 測試：發佈遊戲前刪除
-            Test();
+            // Test();
         }
 
         /// <summary>

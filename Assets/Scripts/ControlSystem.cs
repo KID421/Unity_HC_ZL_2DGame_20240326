@@ -54,6 +54,8 @@ namespace KID
         // 喚醒事件：播放遊戲後會執行一次
         private void Awake()
         {
+            canMove = false;
+            canJump = false;
         }
 
         // 開始事件：喚醒事件後執行一次

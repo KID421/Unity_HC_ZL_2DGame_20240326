@@ -19,6 +19,8 @@ namespace KID
         private ControlSystem controlSystem;
         private Attack attack;
 
+        public bool _canAttack { get; set; } = false;
+
         private void OnDrawGizmos()
         {
             // 迴圈執行全部的攻擊資料
@@ -49,6 +51,8 @@ namespace KID
 
         private void Update()
         {
+            // 如果 不能攻擊 就跳出
+            if (!_canAttack) return;
             Attack();
         }
 

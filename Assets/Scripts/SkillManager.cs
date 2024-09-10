@@ -22,6 +22,8 @@ namespace KID
         private float mp;
         private Animator ani;
 
+        public bool canSkill { get; set; } = false;
+
         private void Awake()
         {
             ani = GetComponent<Animator>();
@@ -33,6 +35,8 @@ namespace KID
 
         private void Update()
         {
+            // 如果 不能放技能 就跳出
+            if (!canSkill) return;
             SkillInput();
         }
 
