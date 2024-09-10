@@ -7,6 +7,9 @@ namespace KID
     /// </summary>
     public class TriggerEnemyArea : MonoBehaviour
     {
+        [SerializeField, Header("要顯示的敵人")]
+        private GameObject[] enemys;
+
         private Animator ani;
         private string parFall = "觸發牆壁掉落";
 
@@ -22,6 +25,11 @@ namespace KID
             {
                 // 就觸發牆壁掉落動畫
                 ani.SetTrigger(parFall);
+                // 顯示全部的敵人
+                for (int i = 0; i < enemys.Length; i++)
+                {
+                    enemys[i].SetActive(true);
+                }
             }
         }
     }
