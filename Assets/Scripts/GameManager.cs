@@ -68,8 +68,10 @@ namespace KID
         /// <summary>
         /// 開始淡入
         /// </summary>
-        public void StartFadeIn()
+        public void StartFadeIn(string title)
         {
+            // 更新結束標題的文字
+            textFinal.text = title;
             StartCoroutine(FadeIn());
         }
 

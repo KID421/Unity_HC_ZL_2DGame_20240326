@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KID
 {
@@ -7,6 +9,8 @@ namespace KID
     /// </summary>
     public class HpEnemy : HpSystem
     {
+        public event EventHandler onDead;
+
         private ShadowEnemy shadowEnemy;
         private EnemySystem enemySystem;
         private BoxCollider boxCollider;
@@ -42,9 +46,9 @@ namespace KID
             boxCollider.enabled = false;
             // 約束 剛體 全部的凍結
             rig.constraints = RigidbodyConstraints.FreezeAll;
-
             SoundManager.instance.PlaySound(SoundType.EnemyDead, 0.8f, 1.3f);
             DropObject();
+            onDead?.Invoke(this, null);
         }
 
         private void DropObject()

@@ -64,7 +64,7 @@ namespace KID
             skillManager.enabled = false;
             SoundManager.instance.PlaySound(SoundType.PlayerDead, 0.8f, 1.3f);
             // 呼叫 GM 的開始淡入
-            GameManager.instance.StartFadeIn();
+            GameManager.instance.StartFadeIn("挑戰失敗");
         }
     }
 }
