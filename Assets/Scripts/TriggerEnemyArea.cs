@@ -29,6 +29,7 @@ namespace KID
                 GetComponent<Collider>().enabled = false;
                 // 就觸發牆壁掉落動畫
                 ani.SetTrigger(parFall);
+                SoundManager.instance.PlaySound(SoundType.StoneDoor);
                 // 顯示全部的敵人
                 for (int i = 0; i < enemys.Length; i++)
                 {
@@ -47,6 +48,7 @@ namespace KID
             {
                 // 就將牆壁上升
                 ani.SetTrigger(parUp);
+                SoundManager.instance.PlaySound(SoundType.StoneDoor);
             }
         }
     }

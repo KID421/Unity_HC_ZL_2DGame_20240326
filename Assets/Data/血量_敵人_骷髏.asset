@@ -17,11 +17,11 @@ MonoBehaviour:
   dropObjects:
   - prefab: {fileID: 3739427510368355509, guid: 857b502dcef3f3446b23bba19e4718ce,
       type: 3}
-    probability: 1
+    probability: 0.7
     offsetY: 3
   - prefab: {fileID: 8913262613474023978, guid: de7d01a7f70b1414d849cb66d509bb9a,
       type: 3}
-    probability: 1
+    probability: 0.5
     offsetY: 3.5
   upMin: 50
   upMax: 200

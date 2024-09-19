@@ -56,6 +56,7 @@ namespace KID
     {
         EatProp, DropProp, Attack1, Attack2,
         EnemyHurt, EnemyDead,
-        Skill1, PlayerHurt, PlayerDead
+        Skill1, PlayerHurt, PlayerDead,
+        StoneDoor
     }
 }
